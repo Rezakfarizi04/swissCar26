@@ -1,0 +1,298 @@
+HTML
+!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>swissCar26 – Autos kaufen und verkaufen</title>
+
+<style>
+
+* { box-sizing: border-box; }
+
+body {
+
+  margin: 0;
+
+  background: #101114;
+
+  color: white;
+
+  font-family: Arial, sans-serif;
+
+}
+
+header {
+
+  padding: 20px;
+
+  background: #191a20;
+
+  border-bottom: 3px solid #e31b23;
+
+}
+
+.logo { font-size: 28px; font-weight: bold; }
+
+.logo span { color: #e31b23; }
+
+.tagline { color: #bbb; margin-top: 7px; }
+
+.hero {
+
+  padding: 38px 20px;
+
+  text-align: center;
+
+  background: linear-gradient(145deg, #30313a, #101114);
+
+}
+
+h1 { font-size: 32px; }
+
+.hero p { color: #ccc; line-height: 1.5; }
+
+input, select, button {
+
+  width: 100%;
+
+  padding: 14px;
+
+  margin: 7px 0;
+
+  border-radius: 8px;
+
+  font-size: 16px;
+
+}
+
+input, select {
+
+  border: 1px solid #444;
+
+  background: #202127;
+
+  color: white;
+
+}
+
+button {
+
+  border: none;
+
+  background: #e31b23;
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
+
+section { padding: 20px; }
+
+.car {
+
+  background: #202127;
+
+  border: 1px solid #333;
+
+  border-radius: 12px;
+
+  padding: 17px;
+
+  margin: 14px 0;
+
+}
+
+.car h3 { margin-top: 0; }
+
+.details { color: #bbb; font-size: 14px; }
+
+.price {
+
+  font-size: 23px;
+
+  font-weight: bold;
+
+  color: #ff454b;
+
+  margin: 12px 0;
+
+}
+
+.pill {
+
+  display: inline-block;
+
+  background: #34353d;
+
+  border-radius: 5px;
+
+  padding: 5px 8px;
+
+  font-size: 12px;
+
+}
+
+footer {
+
+  padding: 25px;
+
+  text-align: center;
+
+  color: #999;
+
+  background: #191a20;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">swiss<span>Car26</span> 🇨🇭</div>
+
+  <div class="tagline">Dein Schweizer Auto-Marktplatz</div>
+
+</header>
+
+<div class="hero">
+
+  <h1>Finde dein Traumauto.</h1>
+
+  <p>Autos kaufen und verkaufen – einfach in der ganzen Schweiz.</p>
+
+  <input id="search" placeholder="Marke oder Modell suchen">
+
+  <select id="maxPrice">
+
+    <option value="">Alle Preise</option>
+
+    <option value="10000">Bis CHF 10'000</option>
+
+    <option value="25000">Bis CHF 25'000</option>
+
+    <option value="40000">Bis CHF 40'000</option>
+
+    <option value="60000">Bis CHF 60'000</option>
+
+  </select>
+
+  <button onclick="searchCars()">Autos suchen</button>
+
+  <button onclick="sellCar()">+ Auto verkaufen</button>
+
+</div>
+
+<section>
+
+  <h2>Neu auf swissCar26</h2>
+
+  <p class="details">Beispielinserate – noch keine echten Verkaufsangebote.</p>
+
+  <div id="cars">
+
+    <div class="car" data-price="32500">
+
+      <span class="pill">Beispiel</span>
+
+      <h3>BMW M5</h3>
+
+      <p class="details">2014 · Benzin · Automatik</p>
+
+      <div class="price">CHF 32'500</div>
+
+      <button onclick="details('BMW M5')">Fahrzeug ansehen</button>
+
+    </div>
+
+    <div class="car" data-price="39900">
+
+      <span class="pill">Beispiel</span>
+
+      <h3>Mercedes-AMG E 63</h3>
+
+      <p class="details">2016 · Benzin · Automatik</p>
+
+      <div class="price">CHF 39'900</div>
+
+      <button onclick="details('Mercedes-AMG E 63')">Fahrzeug ansehen</button>
+
+    </div>
+
+    <div class="car" data-price="54900">
+
+      <span class="pill">Beispiel</span>
+
+      <h3>Audi RS6 Avant</h3>
+
+      <p class="details">2018 · Benzin · Automatik</p>
+
+      <div class="price">CHF 54'900</div>
+
+      <button onclick="details('Audi RS6 Avant')">Fahrzeug ansehen</button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <strong>swissCar26</strong><br>
+
+  Kaufen und Verkaufen in der Schweiz 🇨🇭<br>
+
+  <p>Weitere Funktionen folgen.</p>
+
+</footer>
+
+<script>
+
+function searchCars() {
+
+  const query = document.getElementById('search').value.toLowerCase();
+
+  const max = Number(document.getElementById('maxPrice').value) || Infinity;
+
+  document.querySelectorAll('.car').forEach(car => {
+
+    const matchesName = car.innerText.toLowerCase().includes(query);
+
+    const matchesPrice = Number(car.dataset.price) <= max;
+
+    car.style.display = matchesName && matchesPrice ? 'block' : 'none';
+
+  });
+
+}
+
+function sellCar() {
+
+  alert('Das Inserateformular richten wir als Nächstes ein.');
+
+}
+
+function details(name) {
+
+  alert(name + ': Dies ist ein Beispielinserat. Echte Fahrzeugdetails folgen.');
+
+}
+
+</script>
+
+</body>
+
+</html>
