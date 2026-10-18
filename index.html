@@ -1,300 +1,187 @@
-Fahrzeug Inserieren
-Alles auswählen
 
-!DOCTYPE html>
-https://github.com/Rezakfarizi04/swissCar26/edit/main/index.html
+<!DOCTYPE html>
 <html lang="de">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>swissCar26 – Autos kaufen und verkaufen</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>swissCar26</title>
 <style>
-
-* { box-sizing: border-box; }
-
-body {
-
-  margin: 0;
-
-  background: #101114;
-
-  color: white;
-
-  font-family: Arial, sans-serif;
-
-}
-
-header {
-
-  padding: 20px;
-
-  background: #191a20;
-
-  border-bottom: 3px solid #e31b23;
-
-}
-
-.logo { font-size: 28px; font-weight: bold; }
-
-.logo span { color: #e31b23; }
-
-.tagline { color: #bbb; margin-top: 7px; }
-
-.hero {
-
-  padding: 38px 20px;
-
-  text-align: center;
-
-  background: linear-gradient(145deg, #30313a, #101114);
-
-}
-
-h1 { font-size: 32px; }
-
-.hero p { color: #ccc; line-height: 1.5; }
-
-input, select, button {
-
-  width: 100%;
-
-  padding: 14px;
-
-  margin: 7px 0;
-
-  border-radius: 8px;
-
-  font-size: 16px;
-
-}
-
-input, select {
-
-  border: 1px solid #444;
-
-  background: #202127;
-
-  color: white;
-
-}
-
-button {
-
-  border: none;
-
-  background: #e31b23;
-
-  color: white;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-}
-
-section { padding: 20px; }
-
-.car {
-
-  background: #202127;
-
-  border: 1px solid #333;
-
-  border-radius: 12px;
-
-  padding: 17px;
-
-  margin: 14px 0;
-
-}
-
-.car h3 { margin-top: 0; }
-
-.details { color: #bbb; font-size: 14px; }
-
-.price {
-
-  font-size: 23px;
-
-  font-weight: bold;
-
-  color: #ff454b;
-
-  margin: 12px 0;
-
-}
-
-.pill {
-
-  display: inline-block;
-
-  background: #34353d;
-
-  border-radius: 5px;
-
-  padding: 5px 8px;
-
-  font-size: 12px;
-
-}
-
-footer {
-
-  padding: 25px;
-
-  text-align: center;
-
-  color: #999;
-
-  background: #191a20;
-
-}
-
+*{box-sizing:border-box}
+body{margin:0;background:#101114;color:white;font-family:Arial,sans-serif}
+header{padding:22px;background:#191a1f;border-bottom:3px solid #e32636}
+.logo{font-size:29px;font-weight:bold}
+.logo span{color:#e32636}
+main{max-width:800px;margin:auto;padding:18px}
+button{padding:13px 16px;border:0;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer}
+.primary{background:#e32636;color:white}
+.secondary{background:#33343a;color:white}
+input,select,textarea{width:100%;padding:13px;margin:7px 0 15px;background:#202126;color:white;border:1px solid #444;border-radius:7px;font-size:16px}
+label{display:block;color:#ddd}
+form,.car{background:#1c1d22;border:1px solid #393a40;border-radius:12px;padding:16px;margin:16px 0}
+.hidden{display:none}
+.price{font-size:23px;color:#ff4352;font-weight:bold}
+.small{color:#aaa;font-size:13px}
 </style>
-
 </head>
-
 <body>
-
 <header>
-
-  <div class="logo">swiss<span>Car26</span> 🇨🇭</div>
-
-  <div class="tagline">Dein Schweizer Auto-Marktplatz</div>
-
+  <div class="logo">swiss<span>Car26</span></div>
+  <p>Dein Schweizer Automarktplatz 🇨🇭</p>
 </header>
-
-<div class="hero">
-
+<main>
   <h1>Finde dein Traumauto.</h1>
+  <p>Autos kaufen und verkaufen – in der ganzen Schweiz.</p>
+  <button class="primary" id="openForm">+ Fahrzeug inserieren</button>
 
-  <p>Autos kaufen und verkaufen – einfach in der ganzen Schweiz.</p>
+  <form id="carForm" class="hidden">
+    <h2>Dein Fahrzeug inserieren</h2>
 
+    <label>Verkäufer</label>
+    <select id="seller">
+      <option>Privatperson</option>
+      <option>Garage</option>
+    </select>
+
+    <label>Marke *</label>
+    <select id="brand" required>
+      <option>BMW</option><option>Mercedes-Benz</option>
+      <option>Audi</option><option>Volkswagen</option>
+      <option>Porsche</option><option>Andere</option>
+    </select>
+
+    <label>Modell *</label>
+    <input id="model" placeholder="z. B. M5" required>
+
+    <label>Preis in CHF *</label>
+    <input id="price" type="number" min="1" placeholder="z. B. 32500" required>
+
+    <label>Kilometerstand *</label>
+    <input id="km" type="number" min="0" placeholder="z. B. 175000" required>
+
+    <label>Jahrgang *</label>
+    <input id="year" type="number" min="1950" max="2027" placeholder="z. B. 2014" required>
+
+    <label>Kanton</label>
+    <select id="canton">
+      <option>St. Gallen</option><option>Zürich</option>
+      <option>Thurgau</option><option>Aargau</option>
+      <option>Bern</option><option>Luzern</option>
+      <option>Basel</option><option>Schwyz</option>
+      <option>Andere</option>
+    </select>
+
+    <label>Fahrzeugfotos</label>
+    <input id="photos" type="file" accept="image/*" multiple>
+
+    <label>Telefon oder E-Mail</label>
+    <input id="contact" placeholder="Deine Kontaktdaten">
+
+    <label>Beschreibung</label>
+    <textarea id="description" rows="4" placeholder="Zustand, Ausstattung, MFK usw."></textarea>
+
+    <button class="primary" type="submit">Inserat veröffentlichen</button>
+    <button class="secondary" type="button" id="cancel">Abbrechen</button>
+    <p class="small">Demo-Version: Inserate werden vorerst nur auf diesem Gerät gespeichert.</p>
+  </form>
+
+  <h2>Autos entdecken</h2>
   <input id="search" placeholder="Marke oder Modell suchen">
-
-  <select id="maxPrice">
-
-    <option value="">Alle Preise</option>
-
-    <option value="10000">Bis CHF 10'000</option>
-
-    <option value="25000">Bis CHF 25'000</option>
-
-    <option value="40000">Bis CHF 40'000</option>
-
-    <option value="60000">Bis CHF 60'000</option>
-
-  </select>
-
-  <button onclick="searchCars()">Autos suchen</button>
-
-  <button onclick="sellCar()">+ Auto verkaufen</button>
-
-</div>
-
-<section>
-
-  <h2>Neu auf swissCar26</h2>
-
-  <p class="details">Beispielinserate – noch keine echten Verkaufsangebote.</p>
-
-  <div id="cars">
-
-    <div class="car" data-price="32500">
-
-      <span class="pill">Beispiel</span>
-
-      <h3>BMW M5</h3>
-
-      <p class="details">2014 · Benzin · Automatik</p>
-
-      <div class="price">CHF 32'500</div>
-
-      <button onclick="details('BMW M5')">Fahrzeug ansehen</button>
-
-    </div>
-
-    <div class="car" data-price="39900">
-
-      <span class="pill">Beispiel</span>
-
-      <h3>Mercedes-AMG E 63</h3>
-
-      <p class="details">2016 · Benzin · Automatik</p>
-
-      <div class="price">CHF 39'900</div>
-
-      <button onclick="details('Mercedes-AMG E 63')">Fahrzeug ansehen</button>
-
-    </div>
-
-    <div class="car" data-price="54900">
-
-      <span class="pill">Beispiel</span>
-
-      <h3>Audi RS6 Avant</h3>
-
-      <p class="details">2018 · Benzin · Automatik</p>
-
-      <div class="price">CHF 54'900</div>
-
-      <button onclick="details('Audi RS6 Avant')">Fahrzeug ansehen</button>
-
-    </div>
-
-  </div>
-
-</section>
-
-<footer>
-
-  <strong>swissCar26</strong><br>
-
-  Kaufen und Verkaufen in der Schweiz 🇨🇭<br>
-
-  <p>Weitere Funktionen folgen.</p>
-
-</footer>
+  <div id="cars"></div>
+  <p id="count" class="small"></p>
+</main>
 
 <script>
+const $ = id => document.getElementById(id);
+let cars = [];
+try { cars = JSON.parse(localStorage.getItem("swissCar26Cars") || "[]"); }
+catch(e) { cars = []; }
 
-function searchCars() {
+$("openForm").addEventListener("click", () => {
+  $("carForm").classList.remove("hidden");
+  $("carForm").scrollIntoView({behavior:"smooth"});
+});
+$("cancel").addEventListener("click", () => $("carForm").classList.add("hidden"));
 
-  const query = document.getElementById('search').value.toLowerCase();
+function renderCars(){
+  const term = $("search").value.toLowerCase();
+  const list = cars.filter(c => (c.brand+" "+c.model).toLowerCase().includes(term));
+  $("cars").replaceChildren();
+  $("count").textContent = list.length + " Inserat(e)";
 
-  const max = Number(document.getElementById('maxPrice').value) || Infinity;
+  list.forEach(c => {
+    const card = document.createElement("article");
+    card.className = "car";
+    const heading = document.createElement("h3");
+    heading.textContent = c.brand+" "+c.model;
+    const price = document.createElement("p");
+    price.className = "price";
+    price.textContent = "CHF "+Number(c.price).toLocaleString("de-CH");
+    const details = document.createElement("p");
+    details.textContent = c.year+" · "+Number(c.km).toLocaleString("de-CH")+" km · "+c.canton;
+    const seller = document.createElement("p");
+    seller.className = "small";
+    seller.textContent = c.seller;
+    const desc = document.createElement("p");
+    desc.textContent = c.description || "";
+    card.append(heading,price,details,seller,desc);
 
-  document.querySelectorAll('.car').forEach(car => {
+    if(c.contact){
+      const contact = document.createElement("p");
+      contact.textContent = "Kontakt: "+c.contact;
+      card.append(contact);
+    }
 
-    const matchesName = car.innerText.toLowerCase().includes(query);
-
-    const matchesPrice = Number(car.dataset.price) <= max;
-
-    car.style.display = matchesName && matchesPrice ? 'block' : 'none';
-
+    if(c.photo){
+      const img = document.createElement("img");
+      img.src = c.photo;
+      img.alt = "Fahrzeugfoto";
+      img.style.width = "100%";
+      img.style.borderRadius = "8px";
+      card.insertBefore(img,heading);
+    }
+    $("cars").append(card);
   });
-
 }
+$("search").addEventListener("input",renderCars);
 
-function sellCar() {
-
-  alert('Das Inserateformular richten wir als Nächstes ein.');
-
-}
-
-function details(name) {
-
-  alert(name + ': Dies ist ein Beispielinserat. Echte Fahrzeugdetails folgen.');
-
-}
-
+$("carForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const file = $("photos").files[0];
+  let photo = "";
+  if(file){
+    photo = await new Promise(resolve => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => resolve("");
+      reader.readAsDataURL(file);
+    });
+  }
+  const car = {
+    seller:$("seller").value,
+    brand:$("brand").value,
+    model:$("model").value.trim(),
+    price:Number($("price").value),
+    km:Number($("km").value),
+    year:Number($("year").value),
+    canton:$("canton").value,
+    contact:$("contact").value.trim(),
+    description:$("description").value.trim(),
+    photo
+  };
+  cars.unshift(car);
+  try {
+    localStorage.setItem("swissCar26Cars",JSON.stringify(cars));
+  } catch(err) {
+    alert("Der Speicher ist voll. Bitte verwende ein kleineres Foto.");
+    return;
+  }
+  e.target.reset();
+  $("carForm").classList.add("hidden");
+  renderCars();
+  alert("Inserat auf diesem Gerät gespeichert.");
+});
+renderCars();
 </script>
-
 </body>
-
 </html>
+
